@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -9,14 +9,9 @@ const SignUp: React.FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { signup, user } = useAuth();
+  const { signup } = useAuth();
 
-  // Redirect if already logged in
-  useEffect(() => {
-    if (user) {
-      navigate('/dashboard');
-    }
-  }, [user, navigate]);
+  // Removed auto-redirect - users can access signup page anytime
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

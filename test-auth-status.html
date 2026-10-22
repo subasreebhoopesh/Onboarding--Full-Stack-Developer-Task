@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Auth Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .logged-in { color: green; }
+        .logged-out { color: red; }
+        button {
+            background: #EC6737;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #d45530;
+        }
+        .info {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Authentication Status Checker</h1>
+    
+    <div class="box">
+        <h2>Current Status:</h2>
+        <div class="status" id="status">Checking...</div>
+        <div id="details"></div>
+    </div>
+
+    <div class="box">
+        <h2>Actions:</h2>
+        <button onclick="clearAuth()">Clear Login (Logout)</button>
+        <button onclick="checkStatus()">Refresh Status</button>
+        <button onclick="window.location.href='http://localhost:5173'">Go to App</button>
+    </div>
+
+    <div class="info">
+        <strong>ℹ️ How it works:</strong><br>
+        • If you see "LOGGED IN" → App will go to Dashboard<br>
+        • If you see "LOGGED OUT" → App will go to SignUp/Login<br>
+        • Click "Clear Login" to test new user flow
+    </div>
+
+    <div class="box">
+        <h3>LocalStorage Data:</h3>
+        <pre id="localStorage"></pre>
+    </div>
+
+    <script>
+        function checkStatus() {
+            const token = localStorage.getItem('token');
+            const statusDiv = document.getElementById('status');
+            const detailsDiv = document.getElementById('details');
+            const localStorageDiv = document.getElementById('localStorage');
+
+            // Show all localStorage
+            const allStorage = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                allStorage[key] = localStorage.getItem(key);
+            }
+            localStorageDiv.textContent = JSON.stringify(allStorage, null, 2);
+
+            if (token) {
+                statusDiv.className = 'status logged-in';
+                statusDiv.textContent = '✅ LOGGED IN';
+                detailsDiv.innerHTML = `
+                    <p><strong>Token exists:</strong> ${token.substring(0, 50)}...</p>
+                    <p><strong>What will happen:</strong> App will redirect to Dashboard</p>
+                `;
+            } else {
+                statusDiv.className = 'status logged-out';
+                statusDiv.textContent = '❌ LOGGED OUT';
+                detailsDiv.innerHTML = `
+                    <p><strong>No token found</strong></p>
+                    <p><strong>What will happen:</strong> App will show SignUp/Login page</p>
+                `;
+            }
+        }
+
+        function clearAuth() {
+            // Clear all auth-related data
+            localStorage.removeItem('token');
+            localStorage.removeItem('signup_name');
+            localStorage.removeItem('signup_email');
+            localStorage.removeItem('signup_password');
+            
+            alert('✅ Cleared! Now you will see SignUp/Login page.');
+            checkStatus();
+        }
+
+        // Check on load
+        checkStatus();
+    </script>
+</body>
+</html>
