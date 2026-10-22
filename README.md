@@ -1,283 +1,201 @@
-# Record Innovation Enterprises - Onboarding Platform
+# Record Innovation Enterprises — Onboarding Platform
 
-A modern, full-stack MERN application featuring a multi-step onboarding process and interactive dashboard for Record Innovation Enterprises.
+A full-stack onboarding application developed as part of the **Full Stack Developer Assessment for Record Innovation Enterprises Pvt. Ltd.** The application provides user authentication, a multi-step onboarding workflow with persistent data storage, and a personalized dashboard.
 
-## 🚀 Features
+## Features
 
-### Onboarding Flow (6 Steps)
-- ✅ Personal Information Collection
-- ✅ Educational Background
-- ✅ Skills & Certifications
-- ✅ Professional Experience
-- ✅ Career Preferences
-- ✅ Profile Picture Upload & Job Status
+### 1. User Authentication
+- User registration with name, email, and password.
+- Form validation and appropriate success/error feedback.
+- Secure password hashing using bcrypt.
+- JWT-based authentication.
+- Protected routes for authenticated users.
 
-### Dashboard
-- 📊 **Learning Progress Tracking** - YouTube course integration with progress bars
-- 🏆 **Skill Badges** - Role-based and super skills display
-- 🔗 **Platform Integration** - Connect LeetCode, HackerRank, Dribbble, GitHub, LinkedIn, Naukri, Behance, Stack Overflow
-- 📈 **Activity Heatmap** - Visual learning activity calendar
-- 🎨 **Modern UI** - Responsive design with Tailwind CSS
+### 2. Multi-Step Onboarding
+- Six-step onboarding workflow.
+- Personal information and profile details.
+- Education, skills, and professional experience.
+- Career preferences and job-seeking status.
+- Form validation and step-by-step navigation.
+- Persistent form data stored in MongoDB.
+- Previously entered values restored when navigating back.
 
-## 🛠️ Tech Stack
+### 3. Dashboard
+- Personalized dashboard interface.
+- Learning progress indicators.
+- Skill badges and profile information.
+- External platform integration section.
+- Activity heatmap and learning activity visualization.
+- Responsive dashboard layout.
 
-### Frontend
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Fast build tool
-- **Tailwind CSS** - Utility-first styling
-- **React Router** - Navigation
-- **Axios** - HTTP client
-- **Lucide React** - Modern icons
+*Dashboard elements and progress indicators should be described as static or mock data wherever they are not connected to live services.*
 
-### Backend
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **MongoDB** - NoSQL database
-- **Mongoose** - ODM
-- **JWT** - Authentication
-- **bcrypt** - Password hashing
+## Technology Stack
 
-## 📁 Project Structure
+| Layer | Technologies |
+|---|---|
+| Frontend | React 18, TypeScript, Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router DOM |
+| API Integration | Axios |
+| Backend | Node.js, Express.js |
+| Database | MongoDB |
+| ODM | Mongoose |
+| Authentication | JSON Web Tokens (JWT) |
+| Password Security | bcrypt |
 
-```
+## Project Structure
+
+```text
 record-task/
-├── client/                    # Frontend React application
+├── client/
+│   ├── public/
 │   ├── src/
-│   │   ├── components/       # Reusable components
-│   │   │   ├── dashboard/   # Dashboard-specific components
-│   │   │   │   ├── HeroBanner.tsx
-│   │   │   │   ├── LearningSection.tsx
-│   │   │   │   ├── ShowcaseSection.tsx
-│   │   │   │   ├── RightRail.tsx
-│   │   │   │   ├── Sidebar.tsx
-│   │   │   │   ├── TopBar.tsx
-│   │   │   │   └── logos.tsx
+│   │   ├── components/
+│   │   │   ├── dashboard/
 │   │   │   ├── OnboardingLayout.tsx
 │   │   │   └── ProtectedRoute.tsx
-│   │   ├── context/         # React Context providers
-│   │   │   └── AuthContext.tsx
-│   │   ├── pages/           # Page components
-│   │   │   ├── onboarding/  # Onboarding steps
-│   │   │   │   ├── Step1.tsx
-│   │   │   │   ├── Step2.tsx
-│   │   │   │   ├── Step3.tsx
-│   │   │   │   ├── Step4.tsx
-│   │   │   │   ├── Step5.tsx
-│   │   │   │   └── Step6.tsx
+│   │   ├── context/
+│   │   ├── pages/
+│   │   │   ├── onboarding/
 │   │   │   ├── Dashboard.tsx
 │   │   │   ├── Login.tsx
 │   │   │   └── SignUp.tsx
-│   │   ├── types/           # TypeScript type definitions
-│   │   │   └── index.ts
-│   │   ├── utils/           # Utility functions
-│   │   │   └── api.ts
-│   │   ├── data/            # Static data
-│   │   │   └── dashboard.ts
-│   │   ├── lib/             # Helper libraries
-│   │   │   └── utils.ts
-│   │   ├── assets/          # Images and static assets
-│   │   ├── App.tsx          # Root component
-│   │   ├── main.tsx         # Entry point
-│   │   └── index.css        # Global styles
-│   ├── public/              # Static public assets
-│   ├── package.json
-│   ├── vite.config.ts
-│   ├── tailwind.config.js
-│   └── tsconfig.json
-│
-├── server/                   # Backend Node.js application
-│   ├── src/
-│   │   ├── controllers/     # Route controllers
-│   │   │   ├── authController.js
-│   │   │   └── onboardingController.js
-│   │   ├── middleware/      # Custom middleware
-│   │   │   └── auth.js
-│   │   ├── models/          # Mongoose models
-│   │   │   ├── User.js
-│   │   │   └── FormEntry.js
-│   │   ├── routes/          # API routes
-│   │   │   ├── authRoutes.js
-│   │   │   └── onboardingRoutes.js
-│   │   └── server.js        # Server entry point
-│   ├── .env                 # Environment variables
+│   │   ├── types/
+│   │   ├── utils/
+│   │   ├── data/
+│   │   ├── lib/
+│   │   ├── App.tsx
+│   │   └── main.tsx
 │   └── package.json
-│
-├── .gitignore               # Git ignore rules
-├── README.md                # Project documentation
-├── QUICKSTART.md            # Quick start guide
-├── SETUP.md                 # Detailed setup instructions
-└── package.json             # Root package.json
+├── server/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── server.js
+│   └── package.json
+├── .gitignore
+├── README.md
+└── package.json
 ```
 
-## 🚀 Quick Start
+## Prerequisites
 
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (local or Atlas)
-- npm or yarn
+- Node.js 16 or later
+- npm
+- MongoDB local instance or MongoDB Atlas account
 
-### Installation
+## Getting Started
 
-1. **Clone the repository**
+### 1. Clone the Repository
+
 ```bash
-git clone <repository-url>
+git clone <YOUR_GITHUB_REPOSITORY_URL>
 cd record-task
 ```
 
-2. **Install dependencies**
-```bash
-# Install all dependencies (root, client, server)
-npm install
+Replace the repository URL with your actual GitHub repository URL.
 
-# Or install separately
-cd server && npm install
-cd ../client && npm install
+### 2. Install Dependencies
+
+If the root `package.json` is configured to install all required dependencies:
+
+```bash
+npm install
 ```
 
-3. **Environment Setup**
-```bash
-# Server .env file (server/.env)
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/record-onboarding
-JWT_SECRET=your_jwt_secret_key_here
+Otherwise, install the frontend and backend dependencies separately:
 
-# Client .env file (client/.env) - Optional
+```bash
+cd server
+npm install
+
+cd ../client
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `server/.env` file:
+
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secure_secret_key
+```
+
+If the frontend uses a configurable API URL, create `client/.env`:
+
+```env
 VITE_API_URL=http://localhost:5000
 ```
 
-4. **Start MongoDB**
+Use your own MongoDB connection string and secret. Do not commit `.env` files or credentials to GitHub.
+
+### 4. Start the Backend
+
+Open a terminal:
+
 ```bash
-# Windows - MongoDB should be running as a service
-# Or start manually:
-mongod
-```
-
-5. **Run the application**
-
-**Option 1: Using PowerShell scripts**
-```powershell
-# Terminal 1 - Backend
-.\start-backend.ps1
-
-# Terminal 2 - Frontend
-.\start-frontend.ps1
-```
-
-**Option 2: Manual commands**
-```bash
-# Terminal 1 - Backend
 cd server
 npm start
+```
 
-# Terminal 2 - Frontend
+Use the start command defined in `server/package.json` if it differs.
+
+### 5. Start the Frontend
+
+Open another terminal:
+
+```bash
 cd client
 npm run dev
 ```
 
-6. **Access the application**
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:5000
+Open the local URL printed by Vite, usually `http://localhost:5173`.
 
-## 📖 User Flow
+## Application Workflow
 
-1. **Sign Up** → Create new account with email & password
-2. **Onboarding Steps 1-6** → Complete profile information
-3. **Dashboard** → Access personalized dashboard with:
-   - Learning progress tracking
-   - Skill badges
-   - Platform connections
-   - Activity heatmap
+1. Register a new account.
+2. Log in with the registered credentials.
+3. Complete the onboarding steps.
+4. Navigate between steps and verify that saved data is restored.
+5. Submit the completed onboarding form.
+6. View the dashboard.
 
-## 🔐 Authentication
+## API Endpoints
 
-- JWT-based authentication
-- Protected routes with middleware
-- Secure password hashing with bcrypt
-- Token-based session management
+The following endpoints describe the intended API structure. Verify the actual route definitions in the backend before treating this list as final.
 
-## 🎨 Design System
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/auth/signup` | Register a user |
+| POST | `/api/auth/login` | Authenticate a user |
+| GET | `/api/auth/me` | Retrieve the authenticated user |
+| GET | `/api/onboarding` | Retrieve onboarding data |
+| PUT | `/api/onboarding/step/:stepNumber` | Save a step's data |
+| POST | `/api/onboarding/complete` | Complete onboarding |
 
-### Colors
-- **Brand Orange**: `#EC6737`
-- **Primary Blue**: `#3B82F6`
-- **Background**: White/Light gray
-- **Text**: Dark gray/Black
+## Security and Data Persistence
 
-### Responsive Breakpoints
-- **Mobile**: < 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: 1024px - 1280px
-- **Large Desktop**: > 1280px
+- Passwords are hashed before storage.
+- JWTs are used for authentication.
+- MongoDB stores user accounts and onboarding information.
+- Environment variables are used for configuration and secrets.
 
-## 📱 Responsive Design
+## Responsive Design
 
-✅ **Mobile-first approach**
-- Optimized for all screen sizes
-- Touch-friendly interfaces
-- Collapsible navigation
-- Adaptive layouts
+The interface is designed to adapt to desktop, tablet, and mobile screen sizes. Final responsiveness should be verified on all three viewport sizes.
 
-## 🧪 Testing
+## Assessment Deliverables
 
-### Manual Testing Checklist
-- [ ] Sign up with new account
-- [ ] Login with existing account
-- [ ] Complete all 6 onboarding steps
-- [ ] Upload profile picture
-- [ ] Navigate to dashboard
-- [ ] Connect to external platforms
-- [ ] Test responsive design on different devices
+- Full-stack application source code.
+- GitHub repository with frontend and backend code.
+- PDF document containing screenshots of the implemented screens, from signup through the dashboard.
 
-## 📦 API Endpoints
+## License
 
-### Authentication
-- `POST /api/auth/signup` - Register new user
-- `POST /api/auth/login` - User login
-- `GET /api/auth/me` - Get current user
+This project was developed for the Record Innovation Enterprises Pvt. Ltd. Full Stack Developer Assessment.
 
-### Onboarding
-- `GET /api/onboarding` - Get onboarding progress
-- `PUT /api/onboarding/step/:stepNumber` - Update specific step
-- `POST /api/onboarding/complete` - Mark onboarding as complete
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is proprietary software of Record Innovation and Enterprises Pvt. Ltd.
-
-## 👥 Team
-
-- **Frontend**: React + TypeScript + Tailwind CSS
-- **Backend**: Node.js + Express + MongoDB
-- **Design**: Based on Figma specifications
-
-## 🐛 Known Issues
-
-- File size limit for profile pictures: 5MB
-- Base64 encoding used for image storage (consider cloud storage for production)
-
-## 🚧 Future Enhancements
-
-- [ ] Email verification
-- [ ] Password reset functionality
-- [ ] Social login (Google, LinkedIn)
-- [ ] Real-time notifications
-- [ ] Cloud storage for images
-- [ ] Advanced analytics dashboard
-- [ ] Mobile app version
-
-## 📞 Support
-
-For support, email: support@recordenterprises.com
-
----
-
-**© 2025 Record Innovation and Enterprises Pvt. Ltd. All rights reserved.**
