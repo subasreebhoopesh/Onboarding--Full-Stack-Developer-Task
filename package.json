@@ -1,0 +1,12 @@
+{
+  "name": "record-onboarding-test",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test:connection": "node test-connection.js"
+  },
+  "dependencies": {
+    "mongoose": "^8.1.1",
+    "dotenv": "^16.4.1"
+  }
+}
