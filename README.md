@@ -1,17 +1,17 @@
-# Record Innovation Enterprises — Onboarding Platform
+Record Innovation Enterprises — Onboarding Platform
 
 A full-stack onboarding application developed as part of the **Full Stack Developer Assessment for Record Innovation Enterprises Pvt. Ltd.** The application provides user authentication, a multi-step onboarding workflow with persistent data storage, and a personalized dashboard.
 
-## Features
+Features
 
-### 1. User Authentication
+1. User Authentication
 - User registration with name, email, and password.
 - Form validation and appropriate success/error feedback.
 - Secure password hashing using bcrypt.
 - JWT-based authentication.
 - Protected routes for authenticated users.
 
-### 2. Multi-Step Onboarding
+2. Multi-Step Onboarding
 - Six-step onboarding workflow.
 - Personal information and profile details.
 - Education, skills, and professional experience.
@@ -20,7 +20,7 @@ A full-stack onboarding application developed as part of the **Full Stack Develo
 - Persistent form data stored in MongoDB.
 - Previously entered values restored when navigating back.
 
-### 3. Dashboard
+3. Dashboard
 - Personalized dashboard interface.
 - Learning progress indicators.
 - Skill badges and profile information.
@@ -28,9 +28,9 @@ A full-stack onboarding application developed as part of the **Full Stack Develo
 - Activity heatmap and learning activity visualization.
 - Responsive dashboard layout.
 
-*Dashboard elements and progress indicators should be described as static or mock data wherever they are not connected to live services.*
+Dashboard elements and progress indicators should be described as static or mock data wherever they are not connected to live services.
 
-## Technology Stack
+echnology Stack
 
 | Layer | Technologies |
 |---|---|
@@ -44,7 +44,7 @@ A full-stack onboarding application developed as part of the **Full Stack Develo
 | Authentication | JSON Web Tokens (JWT) |
 | Password Security | bcrypt |
 
-## Project Structure
+Project Structure
 
 ```text
 record-task/
@@ -81,15 +81,15 @@ record-task/
 └── package.json
 ```
 
-## Prerequisites
+Prerequisites
 
 - Node.js 16 or later
 - npm
 - MongoDB local instance or MongoDB Atlas account
 
-## Getting Started
+Getting Started
 
-### 1. Clone the Repository
+1. Clone the Repository
 
 ```bash
 git clone <YOUR_GITHUB_REPOSITORY_URL>
@@ -98,7 +98,7 @@ cd record-task
 
 Replace the repository URL with your actual GitHub repository URL.
 
-### 2. Install Dependencies
+2. Install Dependencies
 
 If the root `package.json` is configured to install all required dependencies:
 
@@ -116,7 +116,7 @@ cd ../client
 npm install
 ```
 
-### 3. Configure Environment Variables
+3. Configure Environment Variables
 
 Create a `server/.env` file:
 
@@ -134,7 +134,7 @@ VITE_API_URL=http://localhost:5000
 
 Use your own MongoDB connection string and secret. Do not commit `.env` files or credentials to GitHub.
 
-### 4. Start the Backend
+4. Start the Backend
 
 Open a terminal:
 
@@ -145,7 +145,7 @@ npm start
 
 Use the start command defined in `server/package.json` if it differs.
 
-### 5. Start the Frontend
+5. Start the Frontend
 
 Open another terminal:
 
@@ -156,7 +156,7 @@ npm run dev
 
 Open the local URL printed by Vite, usually `http://localhost:5173`.
 
-## Application Workflow
+Application Workflow
 
 1. Register a new account.
 2. Log in with the registered credentials.
@@ -165,7 +165,7 @@ Open the local URL printed by Vite, usually `http://localhost:5173`.
 5. Submit the completed onboarding form.
 6. View the dashboard.
 
-## API Endpoints
+API Endpoints
 
 The following endpoints describe the intended API structure. Verify the actual route definitions in the backend before treating this list as final.
 
@@ -178,24 +178,24 @@ The following endpoints describe the intended API structure. Verify the actual r
 | PUT | `/api/onboarding/step/:stepNumber` | Save a step's data |
 | POST | `/api/onboarding/complete` | Complete onboarding |
 
-## Security and Data Persistence
+Security and Data Persistence
 
 - Passwords are hashed before storage.
 - JWTs are used for authentication.
 - MongoDB stores user accounts and onboarding information.
 - Environment variables are used for configuration and secrets.
 
-## Responsive Design
+Responsive Design
 
 The interface is designed to adapt to desktop, tablet, and mobile screen sizes. Final responsiveness should be verified on all three viewport sizes.
 
-## Assessment Deliverables
+Assessment Deliverables
 
 - Full-stack application source code.
 - GitHub repository with frontend and backend code.
 - PDF document containing screenshots of the implemented screens, from signup through the dashboard.
 
-## License
+License
 
 This project was developed for the Record Innovation Enterprises Pvt. Ltd. Full Stack Developer Assessment.
 
